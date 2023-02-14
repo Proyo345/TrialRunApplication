@@ -1,10 +1,6 @@
-﻿Imports System.Data.SqlClient
-Imports System.Data.SqlTypes
-Imports System.Data.Sql
+﻿Public Class Form1
 
-Public Class Form1
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
+
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtFirstName.TextChanged
 
     End Sub
@@ -26,23 +22,30 @@ Public Class Form1
         Dim stBus1 As String
         Dim stBus2 As String
 
-        stFirstName = txtFirstName.Text
-        stLastName = txtLastName.Text
-        stSubject = comSubject.SelectedItem
-        stPeriod = comPeriod.SelectedItem
-        stBus1 = comBus1.SelectedItem
-        stBus2 = comBus2.SelectedItem
+        If txtFirstName.Text = "" Or txtLastName.Text = "" Or comSubject.SelectedItem = "" Or comPeriod.SelectedItem = "" Or comBus1.SelectedItem = "" Or comBus2.SelectedItem = "" Then
 
-        Using conn As System.Data.SqlClient.SqlConnection = New SqlConnection(ConfigurationManager.ConnectionStrings("tps_write").ConnectionString())
+            MsgBox("Please fill out all required areas!")
+
+        Else
+
+            stFirstName = txtFirstName.Text
+            stLastName = txtLastName.Text
+            stSubject = comSubject.SelectedItem
+            stPeriod = comPeriod.SelectedItem
+            stBus1 = comBus1.SelectedItem
+            stBus2 = comBus2.SelectedItem
+
+            MsgBox("Thank you " & stFirstName & " " & stLastName & "!")
+
+        End If
 
 
-
-
-        End Using
 
     End Sub
+
 
     Private Sub Label1_Click_2(sender As Object, e As EventArgs) Handles lblTitle.Click
 
     End Sub
+
 End Class
