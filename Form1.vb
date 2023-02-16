@@ -42,7 +42,9 @@ Public Class Form1
 
             con.Open()
 
-            Dim cmd As New SqlCommand(("Instert Into StudentInfo Values"(" " & stFirstName & " " & stLastName & " " & stSubject & " " & stPeriod & " " & stBus1 & " " & stBus2)))
+            Dim cmd As New SqlCommand("Insert Into StudentInfo Values"("'stFirstName'" & "," & "'stlastname'" & "," & "'Subject'" & "," & "'Period'" & "," & "'Bus1'" & "," & "'Bus2'"))
+
+
 
             cmd.ExecuteNonQuery()
 
@@ -73,6 +75,24 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         con.ConnectionString = "Data Source=DESKTOP-L8RLKNM\SQLEXPRESS;Initial Catalog=TrialRun;Integrated Security=True"
+
+    End Sub
+    Private Sub txtFirstName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
+
+    End Sub
+    Private Sub txtLastName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
+
+    End Sub
+    Private Sub comSubject_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
+
+    End Sub
+    Private Sub comPeriod_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
+
+    End Sub
+    Private Sub comBus1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
+
+    End Sub
+    Private Sub comBus2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
 
     End Sub
 End Class
