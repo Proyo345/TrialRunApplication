@@ -1,4 +1,9 @@
-﻿Public Class Form1
+﻿Imports System.Data.SqlClient
+
+
+Public Class Form1
+
+    Dim con As New SqlConnection
 
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtFirstName.TextChanged
@@ -35,7 +40,24 @@
             stBus1 = comBus1.SelectedItem
             stBus2 = comBus2.SelectedItem
 
+            con.Open()
+
+            Dim cmd As New SqlCommand(("Instert Into StudentInfo Values"(" " & stFirstName & " " & stLastName & " " & stSubject & " " & stPeriod & " " & stBus1 & " " & stBus2)))
+
+            cmd.ExecuteNonQuery()
+
+            con.Close()
+
             MsgBox("Thank you " & stFirstName & " " & stLastName & "!")
+
+            txtFirstName.Clear()
+            txtLastName.Clear()
+            comBus1.Items.Clear()
+            comBus2.Items.Clear()
+            comPeriod.Items.Clear()
+            comSubject.Items.Clear()
+
+
 
         End If
 
@@ -48,4 +70,9 @@
 
     End Sub
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        con.ConnectionString = "Data Source=DESKTOP-L8RLKNM\SQLEXPRESS;Initial Catalog=TrialRun;Integrated Security=True"
+
+    End Sub
 End Class
