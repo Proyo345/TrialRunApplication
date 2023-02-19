@@ -1,9 +1,8 @@
 ﻿Imports System.Data.SqlClient
-
-
+Imports Microsoft.SqlServer
 Public Class Form1
 
-    Dim con As New SqlConnection
+    Dim con As New SqlConnection("Server=LocalHost;Database=TrialRun;Integrated Security=true")
 
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtFirstName.TextChanged
@@ -29,7 +28,7 @@ Public Class Form1
 
         If txtFirstName.Text = "" Or txtLastName.Text = "" Or comSubject.SelectedItem = "" Or comPeriod.SelectedItem = "" Or comBus1.SelectedItem = "" Or comBus2.SelectedItem = "" Then
 
-            MsgBox("Please fill out all required areas!")
+            MsgBox("Please fill out all required fields!")
 
         Else
 
@@ -42,9 +41,9 @@ Public Class Form1
 
             con.Open()
 
-            Dim cmd As New SqlCommand("Insert Into StudentInfo Values"("'stFirstName'" & "," & "'stlastname'" & "," & "'Subject'" & "," & "'Period'" & "," & "'Bus1'" & "," & "'Bus2'"))
+            Dim InsertCmd = "Insert Into StudentInfo Values('" & stFirstName & "' , '" & stLastName & "' , '" & stSubject & "' , '" & stPeriod & "' , '" & stBus1 & "' , '" & stBus2 & "')"
 
-
+            Dim cmd As New SqlCommand(InsertCmd, con)
 
             cmd.ExecuteNonQuery()
 
@@ -54,11 +53,10 @@ Public Class Form1
 
             txtFirstName.Clear()
             txtLastName.Clear()
-            comBus1.Items.Clear()
-            comBus2.Items.Clear()
-            comPeriod.Items.Clear()
-            comSubject.Items.Clear()
-
+            comBus1.SelectedItem = Nothing
+            comBus2.SelectedItem = Nothing
+            comPeriod.SelectedItem = Nothing
+            comSubject.SelectedItem = Nothing
 
 
         End If
