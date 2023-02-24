@@ -12,7 +12,21 @@ Public Class Form1
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblFirstName.Click
 
     End Sub
+    Private Sub comSubject_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
 
+        Dim con As New SqlConnection("Server=LocalHost;Database=TrialRun;Integrated Security=true")
+        Dim pick As New SqlCommand("select * from Subjects", con)
+        Dim adapter As New SqlDataAdapter(pick)
+        Dim table As New DataTable()
+
+        adapter.Fill(table)
+
+        comSubject.DataSource = table
+
+        comSubject.DisplayMember = "SubjectName"
+        comSubject.ValueMember = "ID"
+
+    End Sub
     Private Sub Label1_Click_1(sender As Object, e As EventArgs) Handles lblSubject.Click
 
     End Sub
@@ -73,24 +87,6 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         con.ConnectionString = "Data Source=DESKTOP-L8RLKNM\SQLEXPRESS;Initial Catalog=TrialRun;Integrated Security=True"
-
-    End Sub
-    Private Sub txtFirstName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
-
-    End Sub
-    Private Sub txtLastName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
-
-    End Sub
-    Private Sub comSubject_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
-
-    End Sub
-    Private Sub comPeriod_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
-
-    End Sub
-    Private Sub comBus1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
-
-    End Sub
-    Private Sub comBus2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comSubject.SelectedIndexChanged
 
     End Sub
 End Class

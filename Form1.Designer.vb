@@ -76,7 +76,6 @@ Partial Class Form1
         'comSubject
         '
         Me.comSubject.FormattingEnabled = True
-        Me.comSubject.Items.AddRange(New Object() {"Algebra 2", "Geometry", "Calculus", "Pre-Calc", "Trigonomotry", "English Comp 1", "English Comp 2", "Study Hall", "U.S. History", "Geography"})
         Me.comSubject.Location = New System.Drawing.Point(425, 206)
         Me.comSubject.Name = "comSubject"
         Me.comSubject.Size = New System.Drawing.Size(197, 23)
